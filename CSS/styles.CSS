@@ -7,5 +7,7 @@ h3{
 }
 
 nav{
+    background-color: lightblue;
     font-size: 30px;
+    text-align: center;
 }
