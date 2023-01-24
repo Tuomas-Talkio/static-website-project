@@ -30,11 +30,12 @@ color:rgb(182, 207, 228);
 
     
             h5{display: flex;
+                font-size: 20px;
                 flex-direction: row;
                 align-items: flex-start;
                 padding: 0px;
                 gap: 8px;
-                
+
                 position: absolute;
                 width: 201px;
                 height: 93px;
@@ -44,6 +45,7 @@ color:rgb(182, 207, 228);
 
 }
             h6{display: flex;
+                font-size: 20px;
                 flex-direction: row;
                 align-items: flex-start;
                 padding: 0px;
@@ -51,7 +53,7 @@ color:rgb(182, 207, 228);
                 
                 position: absolute;
                 width: 202px;
-                height: 84px;
+                height: 100px;
                 left: 95px;
                 top: 305px;
                 color: aliceblue;}
@@ -147,7 +149,3 @@ color:rgb(182, 207, 228);
                     font-size: 42px;
                     line-height: 130%;
                 color: aliceblue;}
-
-
-
-
