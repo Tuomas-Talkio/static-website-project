@@ -14,9 +14,7 @@ img{position: absolute;
     height: 183px;
     left: 71px;
     top: 31px;}
-h1{
-    width: 343px;
-height: 83px;
+h1{text-align: center;
 font-style: normal;
 font-weight: 700;
 font-size: 40px;
@@ -27,15 +25,7 @@ justify-content: center;
 align-items: center;
 padding: 8px 16px;
 gap: 8px;
-color:aliceblue;
-position: absolute;
-width: 385px;
-height: 111px;
-left: 578px;
-top: 31px;
-
-background: #89ABDE;
-border-radius: 8px;
+color:rgb(182, 207, 228);
 }
 
     
