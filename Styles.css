@@ -1,0 +1,206 @@
+body{
+    background-image: url('Images/etutausta.png');
+    color: blue;
+
+}
+img{position: absolute;
+    width: 188px;
+    height: 183px;
+    left: 71px;
+    top: 31px;}
+h1{
+    width: 343px;
+height: 83px;
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 130%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 16px;
+gap: 8px;
+color:aliceblue;
+position: absolute;
+width: 385px;
+height: 111px;
+left: 578px;
+top: 31px;
+
+background: #89ABDE;
+border-radius: 8px;
+}
+h2{display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 8px;
+    color: aliceblue;
+    position: absolute;
+    width: 200px;
+    height: 61px;
+    left: 420px;
+    top: 173px;
+    
+    background: #2678F3;
+    border-radius: 8px;
+    }
+    h3{display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 16px;
+        gap: 8px;
+        color: aliceblue;
+        position: absolute;
+        width: 200px;
+        height: 61px;
+        left: 671px;
+        top: 173px;
+        
+        background: #2678F3;
+        border-radius: 8px;}
+        h4{display: flex;
+            color: aliceblue;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 16px;
+            gap: 8px;
+            
+            position: absolute;
+            width: 200px;
+            height: 61px;
+            left: 922px;
+            top: 173px;            
+            background: #2678F3;
+            border-radius: 12px;
+            color: aliceblue;
+        }
+            h5{display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                padding: 0px;
+                gap: 8px;
+                
+                position: absolute;
+                width: 201px;
+                height: 93px;
+                left: 96px;
+                top: 249px;
+                color: aliceblue;
+
+}
+            h6{display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                padding: 0px;
+                gap: 8px;
+                
+                position: absolute;
+                width: 202px;
+                height: 84px;
+                left: 95px;
+                top: 305px;
+                color: aliceblue;}
+            p2{display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                padding: 0px;
+                gap: 8px;
+                
+                position: absolute;
+                width: 288px;
+                height: 78px;
+                left: 95px;
+                top: 273px;
+            color: aliceblue;}
+
+                p3{display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    padding: 0px;
+                    gap: 8px;
+                    
+                    position: absolute;
+                    width: 154px;
+                    height: 232px;
+                    left: 96px;
+                    top: 342px;
+                    color: aliceblue;
+                    }
+            p{position: absolute;
+                width: 523px;
+                height: 270px;
+                left: 420px;
+                top: 312px;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 32px;
+                line-height: 130%;
+            color: aliceblue;
+            background: radial-gradient(50% 50% at 50% 50%, #b3afaf 0%, rgba(217, 217, 217, 0) 100%);}
+            
+            
+            
+            
+            
+            a{color: aliceblue;
+                font-size: 32px;
+            }
+            
+            p5{display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 8px 16px;
+                gap: 8px;
+                
+                position: absolute;
+                width: 200px;
+                height: 61px;
+                left: 65px;
+                top: 234px;
+                color: aliceblue;
+                background: #2678F3;
+                border-radius: 8px;}
+
+                p4{display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    padding: 0px;
+                    gap: 8px;
+                    
+                    position: absolute;
+                    width: 526px;
+                    height: 234px;
+                    left: 512px;
+                    top: 383px;
+                    
+                    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    font-family: 'Nunito';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 32px;
+                    line-height: 130%;
+                    
+                    
+                    
+                    color: #ffffff;
+                }
+                p6{position: absolute;
+                    width: 304px;
+                    height: 83px;
+                    left: 560px;
+                    top: 285px;
+                    
+                    font-weight: 700;
+                    font-size: 64px;
+                    line-height: 130%;
+                color: aliceblue;}
+
+
+
+
