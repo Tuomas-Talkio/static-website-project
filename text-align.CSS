@@ -1,0 +1,38 @@
+body{
+    background-image: url('Images/etutausta.png');
+    background-color:rgba(93, 25, 25, 0.493);
+}
+
+img{position: absolute;
+    width: 188px;
+    height: 183px;
+    left: 71px;
+    top: 31px;
+}
+
+h1{
+    color: aliceblue;
+    text-align: center;
+}
+
+h2{
+    color: aliceblue;
+    text-align: center;
+}
+
+p{
+    color: aliceblue;
+    font-size: 20px;
+    text-align: center;
+}
+
+nav{
+    background-color:rgba(93, 25, 25, 0.493);
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
+
+a{color: aliceblue;
+    font-size: 32px;
+}
