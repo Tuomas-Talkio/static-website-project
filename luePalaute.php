@@ -13,7 +13,8 @@ print "<table border='1'>";
 while ($rivi=mysqli_fetch_object($tulos)){
     print "<tr>";
     // Lisää automaattinen päivämäärä
-    print "<td>$rivi->id<td>$rivi->etunimi<td>$rivi->sukunimi<td>$rivi->palvelu<td>$rivi->ruoka<td>$rivi->vapaasana<td>$rivi->aika";
+    print "<td>$rivi->id<td>$rivi->etunimi<td>$rivi->sukunimi<td>$rivi->palvelu".
+    "<td>$rivi->ruoka<td>$rivi->vapaasana<td>$rivi->aika";
 }
 print "</table>";
 ?>
