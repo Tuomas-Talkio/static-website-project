@@ -10,10 +10,14 @@
     <script>
         function lahetaPalaute(lomake){
             var palaute=new Object();
+            palaute.id=lomake.id.value;
             palaute.etunimi=lomake.etunimi.value;
             palaute.sukunimi=lomake.sukunimi.value;
-            palaute.viesti=lomake.viesti.value;
-            var jsonPalaute=JSON.stringify(kala);
+            palaute.palvelu=lomake.palvelu.value;
+            palaute.ruoka=lomake.palaute.value;
+            palaute.vapaasana=lomake.vapaasana.value;
+            palaute.aika=lomake.aika.value;
+            var jsonPalaute=JSON.stringify(palaute);
             jsonkentta.innerHTML=jsonPalaute;
             
             xmlhttp = new XMLHttpRequest();
@@ -29,10 +33,66 @@
     </script>
 
     <form id='palautelomake'>
-        Etunimi: <input type='text' name='etunimi' value='' placeholder='Sinun etunimi...'><br>
-        Sukunimi: <input type='text' name='sukunimi' value='' placeholder='Sinun sukunimi...'><br>
-        Viesti: <input type='text' name='viesti' value='' placeholder='Viesti...'><br>
-        <input type='button' name='ok' value='Lähetä' onclick='lahetaPalaute(this.form);'><br>
+        First name: <input type='text' name='etunimi' value='' placeholder='Your first name...'><br>
+        Last name: <input type='text' name='sukunimi' value='' placeholder='Your last name...'><br>
+        Service: <div class="form-check">
+            <input class="form-check-input" type="radio" name="palvelu" id="palvelu1" value="Excellent">
+            <label class="form-check-label" for="palvelu1">
+              Excellent
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="palvelu" id="palvelu2" value="Good">
+            <label class="form-check-label" for="palvelu2">
+              Good
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="palvelu" id="palvelu3" value="Average">
+            <label class="form-check-label" for="palvelu3">
+              Average
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="palvelu" id="palvelu4" value="Horrible">
+            <label class="form-check-label" for="palvelu4">
+              Horrible
+            </label>
+          </div>
+        Food: <div class="form-check">
+            <input class="form-check-input" type="radio" name="ruoka" id="ruoka1" value="Delicious">
+            <label class="form-check-label" for="ruoka1">
+              Delicious
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="ruoka" id="ruoka2" value="Good">
+            <label class="form-check-label" for="ruoka2">
+              Good
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="ruoka" id="ruoka3" value="Average">
+            <label class="form-check-label" for="ruoka3">
+              Average
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="ruoka" id="ruoka4" value="Horrible">
+            <label class="form-check-label" for="ruoka4">
+              Horrible
+            </label>
+          </div>
+
+
+        Additional feedback: <input type='text' name='vapaasana' value='' placeholder='Tell us additional details about your experience...'><br>
+        <input type='button' name='ok' value='Send' onclick='lahetaPalaute(this.form);'><br>
     </form>
 
 </body>
