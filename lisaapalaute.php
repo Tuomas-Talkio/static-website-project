@@ -45,7 +45,7 @@ function tarkistaJson($json){
         return false;
     }
     $palaute=json_decode($json, false);
-    if (empty($palaute->etunimi) || ($palaute->sukunimi) || ($palaute->palvelu) || ($palaute->ruoka) || ($palaute->vapaasana)){
+    if (empty($palaute->etunimi) || ($palaute->sukunimi) || ($palaute->palvelu) || ($palaute->ruoka)){
         return false;
     }
     return $palaute;
