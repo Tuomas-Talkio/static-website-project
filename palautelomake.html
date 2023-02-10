@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function lahetaPalaute(lomake){
+            var palaute=new Object();
+            palaute.etunimi=lomake.etunimi.value;
+            palaute.sukunimi=lomake.sukunimi.value;
+            palaute.viesti=lomake.viesti.value;
+            var jsonPalaute=JSON.stringify(kala);
+            jsonkentta.innerHTML=jsonPalaute;
+            
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("result").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "lisaapalaute.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("palaute=" + jsonPalaute);	
+        }
+    </script>
+
+    <form id='kalalomake'>
+        Etunimi: <input type='text' name='etunimi' value='' placeholder='Sinun etunimi...'><br>
+        Sukunimi: <input type='text' name='sukunimi' value='' placeholder='Sinun sukunimi...'><br>
+        Viesti: <input type='text' name='viesti' value='' placeholder='Viesti...'><br>
+        <input type='button' name='ok' value='Lähetä' onclick='lahetaPalaute(this.form);'><br>
+    </form>
+
+</body>
+</html>
