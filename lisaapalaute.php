@@ -12,6 +12,7 @@ mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
 
 try{
     $yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
+    //yhteys=mysqli_connect("db", "root", "password", "webohjelmointi");
 }
 catch(Exception $e){
     print "Yhteysvirhe";
@@ -45,9 +46,10 @@ function tarkistaJson($json){
         return false;
     }
     $palaute=json_decode($json, false);
-    if (empty($palaute->etunimi) || ($palaute->sukunimi) || ($palaute->palvelu) || ($palaute->ruoka)){
+    if (empty($palaute->etunimi) || empty($palaute->sukunimi) || empty($palaute->palvelu) || empty($palaute->ruoka)){
         return false;
     }
+    
     return $palaute;
 }
 ?>
