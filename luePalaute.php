@@ -12,7 +12,7 @@ $tulos=mysqli_query($yhteys, "select * from team1_asiakaspalaute");
 print "<table border='1'>";
 while ($rivi=mysqli_fetch_object($tulos)){
     print "<tr>";
-    // Lisää automaattinen päivämäärä
+
     print "<td>$rivi->id<td>$rivi->etunimi<td>$rivi->sukunimi<td>$rivi->palvelu".
     "<td>$rivi->ruoka<td>$rivi->vapaasana<td>$rivi->aika";
 }
