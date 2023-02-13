@@ -14,9 +14,8 @@
             palaute.etunimi=lomake.etunimi.value;
             palaute.sukunimi=lomake.sukunimi.value;
             palaute.palvelu=lomake.palvelu.value;
-            palaute.ruoka=lomake.palaute.value;
+            palaute.ruoka=lomake.ruoka.value;
             palaute.vapaasana=lomake.vapaasana.value;
-            palaute.aika=lomake.aika.value;
             var jsonPalaute=JSON.stringify(palaute);
             jsonkentta.innerHTML=jsonPalaute;
             
@@ -94,6 +93,12 @@
         Additional feedback: <input type='text' name='vapaasana' value='' placeholder='Tell us additional details about your experience...'><br>
         <input type='button' name='ok' value='Send' onclick='lahetaPalaute(this.form);'><br>
     </form>
+  <div id='result'>
+      Palaute tähän
+  </div>
+  <p id='jsonkentta'>
+      Palaute tähän
+  </p>
 
 </body>
 </html>
