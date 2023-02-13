@@ -3,7 +3,7 @@
 $json=isset($_POST["palaute"]) ? $_POST["palaute"] : "";
 
 if (!($palaute=tarkistaJson($json))){
-    print "Täytä kaikki kentät";
+    print "Fill all option, exept Additional feedback";
     exit;
 }
 
@@ -11,8 +11,8 @@ mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
 // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 try{
-    $yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
-    //yhteys=mysqli_connect("db", "root", "password", "webohjelmointi");
+    //$yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
+    $yhteys=mysqli_connect("db", "root", "password", "webohjelmointi");
 }
 catch(Exception $e){
     print "Yhteysvirhe";
