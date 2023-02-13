@@ -23,11 +23,36 @@
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("result").innerHTML = this.responseText;
+                    luePalaute();
                 }
             };
             xmlhttp.open("POST", "lisaapalaute.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("palaute=" + jsonPalaute);	
+        }
+
+        function luePalaute(){
+          xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("taulukko").innerHTML = this.responseText;
+          }
+        };
+        xmlhttp.open("GET", "./luepalaute.php", true);
+        xmlhttp.send();	
+        }
+
+        function poistaPalaute(indeksi){
+          window.alert("funktio poistaPalaute:"+indeksi);
+          xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("poistettava").innerHTML = this.responseText;
+            luePalaute();
+            }
+          };
+        xmlhttp.open("GET", "./poistaPalaute.php?poistettava="+indeksi, true);
+        xmlhttp.send();
         }
     </script>
 
@@ -89,16 +114,28 @@
             </label>
           </div>
 
-
-        Additional feedback: <input type='text' name='vapaasana' value='' placeholder='Tell us additional details about your experience...'><br>
+          Additional feedback:
+          <br>
+          <textarea name='vapaasana' rows="4" cols="50" placeholder='Tell us additional details about your experience...'></textarea>
+          <br>
         <input type='button' name='ok' value='Send' onclick='lahetaPalaute(this.form);'><br>
     </form>
-  <div id='result'>
-      Palaute tähän
-  </div>
-  <p id='jsonkentta'>
-      Palaute tähän
-  </p>
+
+    <div id="taulukko">
+      taulukko tähän
+    </div>
+
+    <div id='result'>
+        Palaute tähän
+    </div>
+
+    <div id='poistettava'>
+      Poistetteva tähän
+    </div>
+
+    <p id='jsonkentta'>
+        Palaute tähän
+    </p>
 
 </body>
 </html>
