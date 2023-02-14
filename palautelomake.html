@@ -10,7 +10,6 @@
     <script>
         function lahetaPalaute(lomake){
             var palaute=new Object();
-            palaute.id=lomake.id.value;
             palaute.etunimi=lomake.etunimi.value;
             palaute.sukunimi=lomake.sukunimi.value;
             palaute.palvelu=lomake.palvelu.value;
@@ -60,6 +59,7 @@
     </script>
 
     <form id='palautelomake'>
+      Id: <input type='text' name='id' value='' placeholder='id' readonly><br>
         First name: <input id='etunimi' type='text' name='etunimi' value='' placeholder='Your first name...'><br>
         Last name: <input type='text' name='sukunimi' value='' placeholder='Your last name...'><br>
         Service: <div class="form-check">

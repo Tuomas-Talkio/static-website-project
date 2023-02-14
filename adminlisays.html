@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderaattorin luominen</title>
+</head>
+<body>
+    <script>
+       function lahetaKayttaja(lomake){
+            var palaute=new Object();
+            kayttaja.username=lomake.username.value;
+            kayttaja.password=lomake.password.value;
+            var jsonPalaute=JSON.stringify(palaute);
+            jsonkentta.innerHTML=jsonPalaute;
+            
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("result").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "lisaakayttaja.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("palaute=" + jsonPalaute);	
+        } 
+    </script>
+
+    <form id='palautelomake'>
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an admin account.</p>
+    
+        <label for="username"><b>Username</b></label>
+        <input id="username" type="text" placeholder="Enter username" name="username" required><br>
+    
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required><br>
+    
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required><br>
+    <input type='button' name='ok' value='Sign up' onclick='lahetaKayttaja(this.form);'><br>
+    </form>
+    
+    <script>
+        username.focus();
+    </script>
+
+<div id='result'>
+    Lisätty käyttäjä tähän
+</div>
+</body>
+</html>
