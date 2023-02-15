@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palautelomake</title>
+    <title>Feedback</title>
 </head>
 <body>
+
+  <div class="row" style="margin-bottom: 5px;">
+    <nav class="navbar navbar-expand-sm  navbar-dark">
+        <a class="nav-link" href="index.html">Main Page</a>
+        <a class="nav-link" href="main-courses.html">Main courses</a>
+        <a class="nav-link" href="drinks.html">Drinks</a>
+        <a class="nav-link" href="desserts.html">Desserts</a>
+        <a class="nav-link" href="palautelomake.html">Feeedback</a>
+    </nav>  
+  </div>
+
     <script>
         function lahetaPalaute(lomake){
             var palaute=new Object();
@@ -23,6 +34,7 @@
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("result").innerHTML = this.responseText;
+                    luePalaute();
                 }
             };
             xmlhttp.open("POST", "lisaapalaute.php", true);
@@ -31,16 +43,30 @@
         }
 
         function luePalaute(){
-        xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("result").innerHTML = this.responseText;
-            }
+          xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("taulukko").innerHTML = this.responseText;
+          }
         };
         xmlhttp.open("GET", "./luepalaute.php", true);
         xmlhttp.send();	
         }
-    function muokkaaPalaute(indeksi){
+
+        function poistaPalaute(indeksi){
+          window.alert("Are you sure you want to delete: id "+indeksi);
+          xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("poistettava").innerHTML = this.responseText;
+            luePalaute();
+            }
+          };
+        xmlhttp.open("GET", "./poistaPalaute.php?poistettava="+indeksi, true);
+        xmlhttp.send();
+        }
+
+        function muokkaaPalaute(indeksi){
         xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
@@ -60,82 +86,98 @@
     </script>
 
     <form id='palautelomake'>
-        First name: <input id='etunimi' type='text' name='etunimi' value='' placeholder='Your first name...'><br>
-        Last name: <input type='text' name='sukunimi' value='' placeholder='Your last name...'><br>
-        Service: <div class="form-check">
-            <input class="form-check-input" type="radio" name="palvelu" id="palvelu1" value="Excellent">
-            <label class="form-check-label" for="palvelu1">
-              Excellent
-            </label>
-          </div>
+      <input type='hidden' name='id' value=''>
+      <label for="etunimi"><b>First name:</b></label><br>
+      <input id='etunimi' type='text' name='etunimi' value='' placeholder='Your first name...'><br>
+      <label for="sukunimi"><b>Last name:</b></label><br>
+      <input type='text' name='sukunimi' value='' placeholder='Your last name...'><br>
+      <label for="palvelu"><b>Service:</b></label>
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="palvelu" id="palvelu1" value="Excellent">
+          <label class="form-check-label" for="palvelu1">
+            Excellent
+          </label>
+        </div>
 
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="palvelu" id="palvelu2" value="Good">
-            <label class="form-check-label" for="palvelu2">
-              Good
-            </label>
-          </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="palvelu" id="palvelu2" value="Good">
+          <label class="form-check-label" for="palvelu2">
+            Good
+          </label>
+        </div>
 
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="palvelu" id="palvelu3" value="Average">
-            <label class="form-check-label" for="palvelu3">
-              Average
-            </label>
-          </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="palvelu" id="palvelu3" value="Average">
+          <label class="form-check-label" for="palvelu3">
+            Average
+          </label>
+        </div>
 
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="palvelu" id="palvelu4" value="Horrible">
-            <label class="form-check-label" for="palvelu4">
-              Horrible
-            </label>
-          </div>
-        Food: <div class="form-check">
-            <input class="form-check-input" type="radio" name="ruoka" id="ruoka1" value="Delicious">
-            <label class="form-check-label" for="ruoka1">
-              Delicious
-            </label>
-          </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="palvelu" id="palvelu4" value="Horrible">
+          <label class="form-check-label" for="palvelu4">
+            Horrible
+          </label>
+        </div>
+        <label for="ruoka"><b>Food:</b></label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="ruoka" id="ruoka1" value="Delicious">
+          <label class="form-check-label" for="ruoka1">
+            Delicious
+          </label>
+        </div>
 
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="ruoka" id="ruoka2" value="Good">
-            <label class="form-check-label" for="ruoka2">
-              Good
-            </label>
-          </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="ruoka" id="ruoka2" value="Good">
+          <label class="form-check-label" for="ruoka2">
+            Good
+          </label>
+        </div>
 
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="ruoka" id="ruoka3" value="Average">
-            <label class="form-check-label" for="ruoka3">
-              Average
-            </label>
-          </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="ruoka" id="ruoka3" value="Average">
+          <label class="form-check-label" for="ruoka3">
+            Average
+          </label>
+        </div>
 
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="ruoka" id="ruoka4" value="Horrible">
-            <label class="form-check-label" for="ruoka4">
-              Horrible
-            </label>
-          </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="ruoka" id="ruoka4" value="Horrible">
+          <label class="form-check-label" for="ruoka4">
+            Horrible
+          </label>
+        </div>
 
-
-        Additional feedback: <input type='text' name='vapaasana' value='' placeholder='Tell us additional details about your experience...'><br>
-        <input type='button' name='ok' value='Send' onclick='lahetaPalaute(this.form);'><br>
-    </form>
+        <label for="vapaasana"><b>Additional feedback:</b></label>
+        <br>
+        <textarea name='vapaasana' rows="6" cols="50" placeholder='Tell us additional details about your experience...'></textarea>
+        <br>
+      <input type='button' name='ok' value='Send' onclick='lahetaPalaute(this.form);'><br>
+  </form>
   <script>
-      etunimi.focus();
-  </script>
+    etunimi.focus();
+</script>
 <!--Testinappula, poista kun tulostuu sivulle aina-->
-  <button onclick="luePalaute();">Hae palautteet</button>
-
-  <div id='result'>
-      Palaute tähän
+  <button onclick="luePalaute();">Show Table</button>
+  <div id="taulukko">
+    taulukko tähän
   </div>
+
+  <p id='result'>
+      Palaute tähän
+  </p>
+
+  <p id='poistettava'>
+    Poistetteva tähän
+  </p>
+
   <p id='jsonkentta'>
-    Palaute tähän
-</p>
-<p id='muokattava'>
-  Muokkaus tähän
-</p>
-  
+      Palaute tähän
+  </p>
+  <p id='muokattava'>
+    Muokkaus tähän
+  </p>
+
+
 </body>
 </html>

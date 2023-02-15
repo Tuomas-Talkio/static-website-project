@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moderaattorin luominen</title>
+    <title>Admin creation/login</title>
 </head>
 <body>
     <script>
@@ -31,17 +31,19 @@
         <h1>Sign Up</h1>
         <p>Please fill in this form to create an admin account.</p>
     
-        <label for="username"><b>Username</b></label>
+        <label for="username"><b>Username</b></label><br>
         <input id="username" type="text" placeholder="Enter username" name="username" required><br>
     
-        <label for="psw"><b>Password</b></label>
+        <label for="psw"><b>Password</b></label><br>
         <input type="password" placeholder="Enter Password" name="psw" required><br>
     
-        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <label for="psw-repeat"><b>Repeat Password</b></label><br>
         <input type="password" placeholder="Repeat Password" name="psw-repeat" required><br>
     <input type='button' name='ok' value='Sign up' onclick='lahetaKayttaja(this.form);'><br>
+    <!-- <button onclick="window.location.href='adminkirjautuminen.html';">
+    Login -->
+    </button>
     </form>
-    
     <script>
         username.focus();
     </script>
@@ -49,5 +51,27 @@
 <div id='result'>
     Lisätty käyttäjä tähän
 </div>
+<script>
+    function luePalaute(){
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("result").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET", "./luekayttaja.php", true);
+    xmlhttp.send();	
+    }
+</script>
+<form id='kirjautumislomake'>
+    <label for="username"><b>Username</b></label><br>
+    <input id="username" type="text" placeholder="Enter username" name="username" required><br>
+
+    <label for="psw"><b>Password</b></label><br>
+    <input type="password" placeholder="Enter Password" name="psw" required><br>
+<input type='button' name='ok' value='Login' onclick=''><br>
+</form>
+
+
 </body>
 </html>
