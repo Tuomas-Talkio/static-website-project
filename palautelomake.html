@@ -39,7 +39,9 @@
             };
             xmlhttp.open("POST", "lisaapalaute.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send("palaute=" + jsonPalaute);	
+            xmlhttp.send("palaute=" + jsonPalaute);
+
+            document.getElementById("palautelomake").reset();
         }
 
         function luePalaute(){

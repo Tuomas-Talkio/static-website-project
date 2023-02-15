@@ -23,7 +23,9 @@
             };
             xmlhttp.open("POST", "lisaakayttaja.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send("palaute=" + jsonPalaute);	
+            xmlhttp.send("palaute=" + jsonPalaute);
+
+            document.getElementById("adminlisayslomake").reset();
         } 
     </script>
 
@@ -60,7 +62,9 @@
         }
     };
     xmlhttp.open("GET", "./luekayttaja.php", true);
-    xmlhttp.send();	
+    xmlhttp.send();
+
+    document.getElementById("kirjautumislomake").reset();
     }
 </script>
 <form id='kirjautumislomake'>
