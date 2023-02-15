@@ -13,9 +13,10 @@ $tulos=mysqli_query($yhteys, "select * from team1_asiakaspalaute");
 print "<table border='1'>";
 while ($rivi=mysqli_fetch_object($tulos)){
     print "<tr>";
-    print "<td>$rivi->etunimi<td>$rivi->sukunimi<td>$rivi->palvelu".
+    print "<td>$rivi->id<td>$rivi->etunimi<td>$rivi->sukunimi<td>$rivi->palvelu".
     "<td>$rivi->ruoka<td>$rivi->vapaasana<td>$rivi->aika".
-    "<td><button onclick='muokkaaPalaute($rivi->id);'>Muokkaa</button>";
+    "<td><button onclick='muokkaaPalaute($rivi->id);'>Edit</button>".
+    "<td><button onclick='poistaPalaute($rivi->id);'>Delete</button>";
 }
 print "</table>";
 ?>
