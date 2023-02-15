@@ -30,9 +30,25 @@ nav{
     background-color:rgba(93, 25, 25, 0.493);
     font-size: 30px;
     text-align: center;
-    color: white;
 }
 
 a{color: aliceblue;
     font-size: 32px;
+}
+
+input[type=text], input[type=password] {
+    width: 10%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+label{
+    color: aliceblue;
+}
+
+table{
+    color: aliceblue;
 }
