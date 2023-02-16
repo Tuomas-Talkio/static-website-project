@@ -99,9 +99,9 @@
     <form id='palautelomake'>
       <input type='hidden' name='id' value=''>
       <label for="etunimi"><b>First name:</b></label><br>
-      <input id='etunimi' type='text' name='etunimi' value='' placeholder='Your first name...'><br>
+      <input id='etunimi' type='text' name='etunimi' value='' placeholder='Your first name...'><br><br>
       <label for="sukunimi"><b>Last name:</b></label><br>
-      <input type='text' name='sukunimi' value='' placeholder='Your last name...'><br>
+      <input type='text' name='sukunimi' value='' placeholder='Your last name...'><br><br>
       <label for="palvelu"><b>Service:</b></label>
       <div class="form-check">
           <input class="form-check-input" type="radio" name="palvelu" id="palvelu1" value="Excellent">
@@ -158,18 +158,19 @@
             Horrible
           </label>
         </div>
-
+        <br>
         <label for="vapaasana"><b>Additional feedback:</b></label>
         <br>
         <textarea name='vapaasana' rows="6" cols="50" placeholder='Tell us additional details about your experience...'></textarea>
-        <br>
+        <br><br>
+
       <input type='button' name='ok' value='Send' onclick='lahetaPalaute(this.form);'><br>
   </form>
   <script>
     etunimi.focus();
+    luePalaute();
 </script>
-<!--Testinappula, poista kun tulostuu sivulle aina-->
-  <button onclick="luePalaute();">Show Table</button>
+
   <div id="taulukko">
     taulukko tähän
   </div>
