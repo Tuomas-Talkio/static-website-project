@@ -1,16 +1,24 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location:login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This is the drinks menu page for Zack's Family Diner a restaurant in Hämeenlinna">
-    <title>Drinks</title>
-    <meta name="author" content="Tuomas Talkio">
+    <title>Admin functions</title>
     <link href="text-align.CSS" rel="stylesheet" type="text/css">
 </head>
 <body>
-
     <div class="row" style="margin-bottom: 5px;">
         <nav class="navbar navbar-expand-sm  navbar-dark">
             <a class="nav-link" href="index.html">Main Page</a>
@@ -22,18 +30,7 @@
         </nav>  
     </div>
 
-    <img src="Images/rutuarfu.png" alt="Logo" width="42" height="42" style="float:left">
-
-    <h1>Zack's family diner</h1>
-
-    <h2>Drinks</h2>
-
-    <p>Pepsi 0,4L 2€<p>
-
-    <p>Mountain Dew 0,4L 2€</p>
-
-    <p>Faffa 0,4L 2€</p>
-
-    <p>One cup of coffee 1€</p>
+    <p>Welcome to our page</p>
+    <a href="logout.php">logout</a>
 </body>
 </html>
