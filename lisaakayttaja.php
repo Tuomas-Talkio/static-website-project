@@ -1,9 +1,7 @@
 <?php
 
-$json=isset($_POST["palaute"]) ? $_POST["palaute"] : "";
-
-if (!($palaute=tarkistaJson($json))){
-    print "Fill all option, exept Additional feedback";
+$json=isset($_POST["kayttaja"]) ? $_POST["kayttaja"] : "";
+if (!($kayttaja=tarkistaJson($json))){
     exit;
 }
 
@@ -11,8 +9,8 @@ mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
 // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 try{
-    //$yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
-    $yhteys=mysqli_connect("db", "root", "password", "webohjelmointi");
+    $yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
+    //$yhteys=mysqli_connect("db", "root", "password", "webohjelmointi");
 }
 catch(Exception $e){
     print "Yhteysvirhe";
@@ -21,26 +19,39 @@ catch(Exception $e){
 
 //Tehdään sql-lause, jossa kysymysmerkeillä osoitetaan paikat
 //joihin laitetaan muuttujien arvoja
-if (isset($palaute->id) && $palaute->id>0){
-    $sql="update team1_kayttajat set username=?, password=?, where id=?";
-    $stmt=mysqli_prepare($yhteys, $sql);
-    mysqli_stmt_bind_param($stmt, 'ssi', $palaute->username, $palaute->password, $palaute->id);
-}
+
+$sql="insert into team1_kayttajat (username, password, secretword) values(?, ?, ?)";
+//Valmistellaan sql-lause
+$stmt=mysqli_prepare($yhteys, $sql);
+//Sijoitetaan muuttujat oikeisiin paikkoihin
+mysqli_stmt_bind_param($stmt, 'sss', $param_username, $param_password, $param_password);
+//Alustetaan muuttujat
+$param_username = $kayttaja->username;
+//Tehdään hashatty salasana
+$param_password = password_hash($kayttaja->password, PASSWORD_DEFAULT);
+//Suoritetaan sql-lause
 mysqli_stmt_execute($stmt);
 //Suljetaan tietokantayhteys
 mysqli_close($yhteys);
 print "Paluupostina ".$json;
 ?>
+
 <?php
 function tarkistaJson($json){
     if (empty($json)){
         return false;
     }
-    $palaute=json_decode($json, false);
-    if (empty($palaute->username) || empty($palaute->password)){
+    $kayttaja=json_decode($json, false);
+    if (empty($kayttaja->username) || empty($kayttaja->password) || empty($kayttaja->secretword)){
+        print "Fill in all fields";
+        return false;
+    }
+
+    if (strcmp(($kayttaja->password),($kayttaja->secretword))!=0){
+        print "Passwords are not the same";
         return false;
     }
     
-    return $palaute;
+    return $kayttaja;
 }
 ?>
