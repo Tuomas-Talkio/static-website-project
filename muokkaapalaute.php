@@ -3,11 +3,11 @@ mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
 
 $id = isset($_GET["muokattava"]) ? $_GET["muokattava"] : "";
 try{
-    //$yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
-    $yhteys=mysqli_connect("db", "root", "password", "webohjelmointi");
+    $yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
+    //$yhteys=mysqli_connect("db", "root", "password", "webohjelmointi");
 }
 catch(Exception $e){
-    print "Yhteysvirhe";
+    print "Connection error";
     exit;
 }
 

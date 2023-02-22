@@ -13,7 +13,9 @@ print "<table border='1'>";
 while ($rivi=mysqli_fetch_object($tulos)){
     print "<tr>";
     print "<td>$rivi->id<td>$rivi->etunimi<td>$rivi->sukunimi<td>$rivi->palvelu".
-    "<td>$rivi->ruoka<td>$rivi->vapaasana";
+    "<td>$rivi->ruoka<td>$rivi->vapaasana<td>$rivi->aika";
+    print "<td><button onclick='muokkaaPalaute($rivi->id);'>Edit</button>";
+    print "<td><button onclick='poistaPalaute($rivi->id);'>Delete</button>";
 }
 print "</table>";
 ?>

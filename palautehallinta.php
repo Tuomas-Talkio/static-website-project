@@ -1,3 +1,14 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location:kirjautuminen.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,16 +20,13 @@
 </head>
 <body>
 
-  <div class="row" style="margin-bottom: 5px;">
-    <nav class="navbar navbar-expand-sm  navbar-dark">
-        <a class="nav-link" href="index.html">Main Page</a>
-        <a class="nav-link" href="main-courses.html">Main courses</a>
-        <a class="nav-link" href="drinks.html">Drinks</a>
-        <a class="nav-link" href="desserts.html">Desserts</a>
-        <a class="nav-link" href="palautelomake.html">Feedback</a>
-        <a class="nav-link" href="kirjautuminen.php">Log in</a>
-    </nav>  
-  </div>
+    <div class="row" style="margin-bottom: 5px;">
+        <nav class="navbar navbar-expand-sm  navbar-dark">
+            <a class="nav-link" href="palautehallinta.php">Feedback management</a>
+            <a class="nav-link" href="adminlisays.php">Add new admins</a>
+            <a class="nav-link" href="logout.php">Log out</a>
+        </nav>  
+    </div>
 
     <script>
         function lahetaPalaute(lomake){
@@ -30,7 +38,7 @@
             palaute.ruoka=lomake.ruoka.value;
             palaute.vapaasana=lomake.vapaasana.value;
             var jsonPalaute=JSON.stringify(palaute);
-            //jsonkentta.innerHTML=jsonPalaute;
+            jsonkentta.innerHTML=jsonPalaute;
             
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -47,17 +55,47 @@
         function luePalaute(){
           xmlhttp = new XMLHttpRequest();
           xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("taulukko").innerHTML = this.responseText;
-            }
-          };
-        xmlhttp.open("GET", "./luepalaute.php", true);
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("taulukko").innerHTML = this.responseText;
+          }
+        };
+        xmlhttp.open("GET", "./adminpalaute.php", true);
         xmlhttp.send();	
         }
 
+        function poistaPalaute(indeksi){
+          xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("poistettava").innerHTML = this.responseText;
+            luePalaute();
+            }
+          };
+        xmlhttp.open("GET", "./poistaPalaute.php?poistettava="+indeksi, true);
+        xmlhttp.send();
+        }
+
+        function muokkaaPalaute(indeksi){
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("muokattava").innerHTML = this.responseText;
+                palaute=JSON.parse(this.responseText);
+                palautelomake.id.value=palaute.id;
+                palautelomake.etunimi.value=palaute.etunimi;
+                palautelomake.sukunimi.value=palaute.sukunimi;
+                palautelomake.palvelu.value=palaute.palvelu;
+                palautelomake.ruoka.value=palaute.ruoka;
+                palautelomake.vapaasana.value=palaute.vapaasana;
+            }
+        };
+        xmlhttp.open("GET", "./muokkaapalaute.php?muokattava="+indeksi, true);
+        xmlhttp.send();
+    }
     </script>
 
     <form id='palautelomake'>
+        <input type='hidden' name='id' value=''>
         <label for="etunimi"><b>First name:</b></label><br>
         <input id="etunimi" type='text' name='etunimi' value='' placeholder='Your first name...'><br>
         <label for="sukunimi"><b>Last name:</b></label><br>
@@ -123,7 +161,7 @@
           <br>
           <textarea name='vapaasana' rows="6" cols="50" placeholder='Tell us additional details about your experience...'></textarea>
           <br>
-          <input type='button' name='ok' value='Send' onclick='lahetaPalaute(this.form);'><br>
+        <input type='button' name='ok' value='Send' onclick='lahetaPalaute(this.form);'><br>
     </form>
 
     <script>
@@ -139,8 +177,17 @@
 
     </p>
 
-    <!-- <p id='jsonkentta'>
-    </p> -->
+    <p id='poistettava'>
+
+    </p>
+
+    <p id='muokattava'>
+
+    </p>
+
+    <p id='jsonkentta'>
+
+    </p>
 
 </body>
 </html>

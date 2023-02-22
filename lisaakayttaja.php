@@ -4,16 +4,14 @@ $json=isset($_POST["kayttaja"]) ? $_POST["kayttaja"] : "";
 if (!($kayttaja=tarkistaJson($json))){
     exit;
 }
-
 mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
 // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 try{
     $yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
-    //$yhteys=mysqli_connect("db", "root", "password", "webohjelmointi");
 }
 catch(Exception $e){
-    print "Yhteysvirhe";
+    print "Connection error";
     exit;
 }
 
@@ -24,16 +22,12 @@ $sql="insert into team1_kayttajat (username, password, secretword) values(?, ?, 
 //Valmistellaan sql-lause
 $stmt=mysqli_prepare($yhteys, $sql);
 //Sijoitetaan muuttujat oikeisiin paikkoihin
-mysqli_stmt_bind_param($stmt, 'sss', $param_username, $param_password, $param_password);
-//Alustetaan muuttujat
-$param_username = $kayttaja->username;
-//Tehdään hashatty salasana
-$param_password = password_hash($kayttaja->password, PASSWORD_DEFAULT);
+mysqli_stmt_bind_param($stmt, 'sss', $kayttaja->username, $kayttaja->password, $kayttaja->secretword);
 //Suoritetaan sql-lause
 mysqli_stmt_execute($stmt);
 //Suljetaan tietokantayhteys
 mysqli_close($yhteys);
-print "Paluupostina ".$json;
+print "New admin account succesfully added"
 ?>
 
 <?php

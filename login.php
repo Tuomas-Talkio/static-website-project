@@ -20,12 +20,9 @@ try{
     $yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
 }
 catch(Exception $e){ 
-    print "Yhteysvirhe";
+    print "Connection error";
     exit;
 }
-
-
-
     // Prepare a select statement
     $sql = "select id, password from team1_kayttajat where username = ?";
     
@@ -42,7 +39,7 @@ catch(Exception $e){
         $stmt->fetch();
         // Account exists, now we verify the password.
         // Note: remember to use password_hash in your registration file to store the hashed passwords.
-        if (password_verify($kirjautuminen->password, $password)) {
+        if ($kirjautuminen->password === $password) {
             // Verification success! User has logged-in!
             // Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
             session_regenerate_id();
