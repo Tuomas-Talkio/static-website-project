@@ -34,7 +34,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             kayttaja.password=lomake.password.value;
             kayttaja.secretword=lomake.secretword.value;
             var jsonKayttaja=JSON.stringify(kayttaja);
-            //jsonkentta.innerHTML=jsonKayttaja;
+            jsonkentta.innerHTML=jsonKayttaja;
             
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -73,9 +73,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
 </p>
 
-<!-- <p id='jsonkentta'>
-    
-</p> -->
+<input type="hidden" id='jsonkentta'>
 
 </body>
 </html>

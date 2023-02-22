@@ -36,7 +36,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             kirjautuminen.username=lomake2.username.value;
             kirjautuminen.password=lomake2.password.value;
             var jsonKirjautuminen=JSON.stringify(kirjautuminen);
-            //jsonkentta2.innerHTML=jsonKirjautuminen;
+            jsonkentta2.innerHTML=jsonKirjautuminen;
              
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -71,10 +71,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     <p id='result2'>
        
     </p>
-    
-    <!-- <p id='jsonkentta2'>
-        
-    </p> -->
+
+    <input type="hidden" id='jsonkentta2'>
 
 </body>
 </html>

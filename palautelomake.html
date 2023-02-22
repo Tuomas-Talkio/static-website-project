@@ -30,7 +30,7 @@
             palaute.ruoka=lomake.ruoka.value;
             palaute.vapaasana=lomake.vapaasana.value;
             var jsonPalaute=JSON.stringify(palaute);
-            //jsonkentta.innerHTML=jsonPalaute;
+            jsonkentta.innerHTML=jsonPalaute;
             
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -139,8 +139,7 @@
 
     </p>
 
-    <!-- <p id='jsonkentta'>
-    </p> -->
+    <input type="hidden" id='jsonkentta'>
 
 </body>
 </html>

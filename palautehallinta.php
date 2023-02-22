@@ -181,13 +181,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     </p>
 
-    <p id='muokattava'>
+    <input type='hidden' id='muokattava'>
 
-    </p>
-
-    <p id='jsonkentta'>
-
-    </p>
+    <input type="hidden" id='jsonkentta'>
 
 </body>
 </html>
