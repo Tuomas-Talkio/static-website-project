@@ -20,12 +20,9 @@ try{
     $yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
 }
 catch(Exception $e){ 
-    print "Yhteysvirhe";
+    print "Connection error";
     exit;
 }
-
-
-
     // Prepare a select statement
     $sql = "select id, password from team1_kayttajat where username = ?";
     

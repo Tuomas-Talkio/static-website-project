@@ -4,7 +4,6 @@ $json=isset($_POST["kayttaja"]) ? $_POST["kayttaja"] : "";
 if (!($kayttaja=tarkistaJson($json))){
     exit;
 }
-
 mysqli_report(MYSQLI_REPORT_ALL ^ MYSQLI_REPORT_INDEX);
 // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
@@ -12,7 +11,7 @@ try{
     $yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
 }
 catch(Exception $e){
-    print "Yhteysvirhe";
+    print "Connection error";
     exit;
 }
 
@@ -28,7 +27,7 @@ mysqli_stmt_bind_param($stmt, 'sss', $kayttaja->username, $kayttaja->password, $
 mysqli_stmt_execute($stmt);
 //Suljetaan tietokantayhteys
 mysqli_close($yhteys);
-print "Paluupostina ".$json;
+print "New admin account succesfully added"
 ?>
 
 <?php

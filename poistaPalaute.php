@@ -11,7 +11,7 @@ try{
     $yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
 }
 catch(Exception $e){
-    print "Yhteysvirhe";
+    print "Connection error";
     exit;
 }
 
@@ -26,5 +26,5 @@ mysqli_stmt_execute($stmt);
 
 //Suljetaan tietokantayhteys
 mysqli_close($yhteys);
-print "Palaute poistettu"
+print "Deletion succesful"
 ?>

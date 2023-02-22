@@ -11,6 +11,6 @@ session_destroy();
 // Redirect to login page
 print "succesfully logged out";
 
-header("location: adminlisays.html");
+header("location: kirjautuminen.php");
 exit;
 ?>

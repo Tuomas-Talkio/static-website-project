@@ -11,23 +11,28 @@ try{
     $yhteys=mysqli_connect("localhost", "trtkp22a3", "trtkp22816", "trtkp22a3");
 }
 catch(Exception $e){
-    print "Yhteysvirhe";
+    print "Connection error";
     exit;
 }
 
 //Tehdään sql-lause, jossa kysymysmerkeillä osoitetaan paikat
 //joihin laitetaan muuttujien arvoja
 
-$sql="insert into team1_asiakaspalaute (etunimi, sukunimi, palvelu, ruoka, vapaasana) values(?, ?, ?, ?, ?)";
-//Valmistellaan sql-lause
-$stmt=mysqli_prepare($yhteys, $sql);
-//Sijoitetaan muuttujat oikeisiin paikkoihin
-mysqli_stmt_bind_param($stmt, 'sssss', $palaute->etunimi, $palaute->sukunimi, $palaute->palvelu, $palaute->ruoka, $palaute->vapaasana);
-//Suoritetaan sql-lause
+if (isset($palaute->id) && $palaute->id>0){
+    $sql="update team1_asiakaspalaute set etunimi=?, sukunimi=?, palvelu=?, ruoka=?, vapaasana=? where id=?";
+    $stmt=mysqli_prepare($yhteys, $sql);
+    mysqli_stmt_bind_param($stmt, 'sssssi', $palaute->etunimi, $palaute->sukunimi, $palaute->palvelu, $palaute->ruoka, $palaute->vapaasana, $palaute->id);
+}else{
+    $sql="insert into team1_asiakaspalaute (etunimi, sukunimi, palvelu, ruoka, vapaasana) values(?, ?, ?, ?, ?)";
+    //Valmistellaan sql-lause
+    $stmt=mysqli_prepare($yhteys, $sql);
+    //Sijoitetaan muuttujat oikeisiin paikkoihin
+    mysqli_stmt_bind_param($stmt, 'sssss', $palaute->etunimi, $palaute->sukunimi, $palaute->palvelu, $palaute->ruoka, $palaute->vapaasana);
+    //Suoritetaan sql-lause
+}
 mysqli_stmt_execute($stmt);
 //Suljetaan tietokantayhteys
 mysqli_close($yhteys);
-print "Paluupostina ".$json;
 ?>
 
 <?php
@@ -38,16 +43,10 @@ function tarkistaJson($json){
     $palaute=json_decode($json, false);
 
     if (empty($palaute->etunimi) || empty($palaute->sukunimi) || empty($palaute->palvelu) || empty($palaute->ruoka)){
-        print "täytä kaikki kentät";
+        print "Fill in all the fields";
         return false;
     }
-
-    //if(strcmp(($palaute->etunimi),($palaute->sukunimi))!=0){
-        //print "Etunimi ja sukunimi eivät ole samat";
-        //return false;
-    //}
 
     return $palaute;
 }
 ?>
-
